@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
       <el-row>
-        <el-col :span="16" :offset="4">
+        <el-col :xs="{span: 24, offset: 0}" :sm="{span: 24, offset: 0}" :md="{span: 16, offset: 4}" :lg="{span: 16, offset: 4}" :xl="{span: 16, offset: 4}">
           <el-menu :default-active="index" class="el-menu-demo" mode="horizontal" @select="handleSelect">
             <el-menu-item index="index">首页</el-menu-item>
             <el-menu-item index="categories">产品</el-menu-item>
@@ -24,7 +24,7 @@
     </el-aside> -->
     <el-main>
       <el-row>
-        <el-col :span="16" :offset="4">
+        <el-col :xs="{span: 24, offset: 0}" :sm="{span: 24, offset: 0}" :md="{span: 16, offset: 4}" :lg="{span: 16, offset: 4}" :xl="{span: 16, offset: 4}">
           <slot name="body"></slot>
         </el-col>
       </el-row>
