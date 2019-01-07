@@ -1,17 +1,19 @@
 <template>
   <el-container>
-    <!-- <el-header>
-      <el-row :gutter="20">
-    		<el-menu :default-active="index" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-    		  <el-menu-item index="index">首页</el-menu-item>
-    		  <el-menu-item index="categories">分类管理</el-menu-item>
-          <el-menu-item index="goods">商品管理</el-menu-item>
-          <el-menu-item index="users">客户管理</el-menu-item>
-    		</el-menu>
+    <el-header>
+      <el-row>
+        <el-col :span="16" :offset="4">
+          <el-menu :default-active="index" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+            <el-menu-item index="index">首页</el-menu-item>
+            <el-menu-item index="categories">产品</el-menu-item>
+            <el-menu-item index="goods">关于我们</el-menu-item>
+            <el-menu-item index="users">联系我们</el-menu-item>
+          </el-menu>
+        </el-col>
       </el-row>
-    </el-header> -->
+    </el-header>
 
-    <el-aside width="200px">
+   <!--  <el-aside width="200px">
       <el-menu :default-active="index" class="el-menu-vertical-demo"  @select="handleSelect" :collapse="false">
         <el-menu-item index="index">首页</el-menu-item>
         <el-menu-item index="categories">分类管理</el-menu-item>
@@ -19,9 +21,13 @@
         <el-menu-item index="users">客户管理</el-menu-item>
         <el-menu-item index="orders">订单管理</el-menu-item>
       </el-menu>
-    </el-aside>
+    </el-aside> -->
     <el-main>
-      <slot name="body"></slot>
+      <el-row>
+        <el-col :span="16" :offset="4">
+          <slot name="body"></slot>
+        </el-col>
+      </el-row>
     </el-main>
   </el-container>
 </template>
