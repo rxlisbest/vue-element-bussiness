@@ -12,16 +12,6 @@
         </el-col>
       </el-row>
     </el-header>
-
-   <!--  <el-aside width="200px">
-      <el-menu :default-active="index" class="el-menu-vertical-demo"  @select="handleSelect" :collapse="false">
-        <el-menu-item index="index">首页</el-menu-item>
-        <el-menu-item index="categories">分类管理</el-menu-item>
-        <el-menu-item index="goods">商品管理</el-menu-item>
-        <el-menu-item index="users">客户管理</el-menu-item>
-        <el-menu-item index="orders">订单管理</el-menu-item>
-      </el-menu>
-    </el-aside> -->
     <el-main>
       <el-row>
         <el-col :xs="{span: 24, offset: 0}" :sm="{span: 24, offset: 0}" :md="{span: 16, offset: 4}" :lg="{span: 16, offset: 4}" :xl="{span: 16, offset: 4}">
@@ -29,6 +19,7 @@
         </el-col>
       </el-row>
     </el-main>
+    <el-footer>Footer</el-footer>
   </el-container>
 </template>
 
@@ -69,5 +60,11 @@
 <style>
   .el-menu,.el-main {
     overflow: auto;
+  }
+  .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
   }
 </style>
