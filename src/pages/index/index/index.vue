@@ -1,5 +1,5 @@
 <template>
-  <layout index="index">
+  <index-layout index="index">
     <template slot="body">
       <el-carousel height="380px">
         <el-carousel-item v-for="item in 4" :key="item">
@@ -21,15 +21,15 @@
         </el-col>
       </el-row>
     </template>
-  </layout>
+  </index-layout>
 </template>
 
 <script>
-import Layout from '../../../components/Layout'
+import IndexLayout from '../../../components/IndexLayout'
 export default {
-  name: 'HelloWorld',
+  name: 'index',
   components: {
-    Layout
+    IndexLayout
   },
   data() {
   	return {}

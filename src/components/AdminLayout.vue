@@ -33,7 +33,7 @@
     MenuItem
   } from 'element-ui'
   export default {
-    name: 'Layout',
+    name: 'AdminLayout',
     components: {
       Container,
       Header,

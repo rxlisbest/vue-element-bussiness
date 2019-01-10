@@ -1,5 +1,5 @@
 <template>
-  <layout index="index">
+  <admin-layout index="index">
     <template slot="body">
       <el-carousel height="380px">
         <el-carousel-item v-for="item in 4" :key="item">
@@ -21,15 +21,15 @@
         </el-col>
       </el-row>
     </template>
-  </layout>
+  </admin-layout>
 </template>
 
 <script>
-import Layout from '../../../components/Layout'
+import AdminLayout from '../../../components/AdminLayout'
 export default {
   name: 'HelloWorld',
   components: {
-    Layout
+    AdminLayout
   },
   data() {
   	return {}
