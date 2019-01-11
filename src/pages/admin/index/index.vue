@@ -1,25 +1,64 @@
 <template>
   <admin-layout index="index">
     <template slot="body">
-      <el-carousel height="380px">
-        <el-carousel-item v-for="item in 4" :key="item">
-          <h3>{{ item }}</h3>
-        </el-carousel-item>
-      </el-carousel>
-      <el-row :gutter="20" class="index-product">
-        <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" v-for="i in 3" >
-          <el-card :body-style="{ padding: '0px' }" class="index-product-item">
-            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546850533502&di=3231818618a5c6fd4366d41c80f7e04a&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201504%2F04%2F20150404H0224_hK5ma.jpeg" class="image" width="100%">
-            <div style="padding: 14px;">
-              <span>好吃的汉堡</span>
-              <div class="bottom clearfix">
-                <time class="time"></time>
-                <el-button type="text" class="button">操作按钮</el-button>
-              </div>
-            </div>
-          </el-card>
+      <el-row>
+        <el-col :span="18">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name: 'goods-index' }">商品管理</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name: 'goods-index' }">详情</el-breadcrumb-item>
+          </el-breadcrumb>
+        </el-col>
+        <el-col :span="6" class="el-col-button">
+          <el-button type="primary" @click="open({name: 'goods-add'})" icon="el-icon-plus"></el-button>
         </el-col>
       </el-row>
+
+      <el-table
+        :data="tableData"
+        stripe
+        style="width: 100%">
+        <el-table-column
+          type="index"
+          width="80">
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="名称">
+        </el-table-column>
+        <el-table-column
+          label="单价">
+          <template slot-scope="scope">
+            ￥{{scope.row.price.toFixed(2)}} / {{scope.row.unit}}
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="库存">
+          <template slot-scope="scope">
+            {{scope.row.amount}} {{scope.row.unit}}
+          </template>
+        </el-table-column>
+        <el-table-column
+          width="200"
+          label="操作">
+          <template slot-scope="scope">
+            <el-button @click="open({name: 'goods-amount', query: {id: scope.row.id}})" type="primary" icon="el-icon-plus" circle title="入库"></el-button>
+            <el-button @click="open({name: 'goods-detail', query: {id: scope.row.id}})" type="primary" icon="el-icon-tickets" circle title="详情"></el-button>
+            <el-button @click="edit(scope.row.id)" type="primary" icon="el-icon-edit" circle title="编辑"></el-button>
+            <el-button @click="del(scope.row.id)" type="danger" icon="el-icon-delete" circle title="删除"></el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <el-pagination
+        background
+        v-if="tableData.length > 0"
+        layout="prev, pager, next"
+        :current-page="pagination.page"
+        :page-size="pagination.pageSize"
+        @current-change="handleCurrentChange"
+        :total="pagination.count" class="pagination">
+      </el-pagination>
     </template>
   </admin-layout>
 </template>
@@ -32,7 +71,14 @@ export default {
     AdminLayout
   },
   data() {
-  	return {}
+  	return {
+      tableData: [],
+      pagination: {
+        page: 1,
+        pageSize: 8,
+        pages: 1
+      }
+    }
   }
 }
 </script>
