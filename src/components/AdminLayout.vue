@@ -1,8 +1,8 @@
 <template>
-  <el-container>
+  <el-container style="height: 100%;">
     <el-header>
-      <el-row>
-        <el-col :span="8">
+      <el-row class="el-header-row">
+        <el-col :span="8" class="logo">
           测试后台管理系统
         </el-col>
         <el-col :offset="8" :span="8" style="text-align: right;">
@@ -19,8 +19,8 @@
       </el-row>
     </el-header>
     <el-container style="height: 100%;">
-      <el-aside>
-        <el-menu :default-openeds="['1', '3']">
+      <el-aside style="height: 100%;">
+        <el-menu :default-openeds="['1', '3']" style="height: 100%;">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>导航一</template>
             <el-menu-item-group>
@@ -114,8 +114,25 @@
 </script>
 
 <style>
+  body, html {
+    height: 100%;
+  }
+  #app {
+    height: 100%;
+  }
+  .logo {
+    font-size: 30px;
+  }
+  .el-header-row {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
   .el-menu,.el-main {
     overflow: auto;
+  }
+  .el-header {
+    background-color: yellow;
   }
   .el-footer {
     background-color: #B3C0D1;
