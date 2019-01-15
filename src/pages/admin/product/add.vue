@@ -14,51 +14,38 @@
         </el-col>
       </el-row>
 
-      <el-table
-        :data="tableData"
-        stripe
-        style="width: 100%">
-        <el-table-column
-          type="index"
-          width="80">
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          label="名称">
-        </el-table-column>
-        <el-table-column
-          label="单价">
-          <template slot-scope="scope">
-            ￥{{scope.row.price.toFixed(2)}} / {{scope.row.unit}}
-          </template>
-        </el-table-column>
-        <el-table-column
-          label="库存">
-          <template slot-scope="scope">
-            {{scope.row.amount}} {{scope.row.unit}}
-          </template>
-        </el-table-column>
-        <el-table-column
-          width="200"
-          label="操作">
-          <template slot-scope="scope">
-            <el-button @click="open({name: 'goods-amount', query: {id: scope.row.id}})" type="primary" icon="el-icon-plus" circle title="入库"></el-button>
-            <el-button @click="open({name: 'goods-detail', query: {id: scope.row.id}})" type="primary" icon="el-icon-tickets" circle title="详情"></el-button>
-            <el-button @click="edit(scope.row.id)" type="primary" icon="el-icon-edit" circle title="编辑"></el-button>
-            <el-button @click="del(scope.row.id)" type="danger" icon="el-icon-delete" circle title="删除"></el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-
-      <el-pagination
-        background
-        v-if="tableData.length > 0"
-        layout="prev, pager, next"
-        :current-page="pagination.page"
-        :page-size="pagination.pageSize"
-        @current-change="handleCurrentChange"
-        :total="pagination.count" class="pagination">
-      </el-pagination>
+      <el-form ref="ruleForm" :model="form" :rules="rules" label-width="80px" class="demo-ruleForm">
+        <el-form-item prop="name" label="商品名称">
+          <el-col :span="8">
+            <el-input v-model="form.name"></el-input>
+          </el-col>
+        </el-form-item>
+        <el-form-item prop="category_id" label="分类">
+          <el-select v-model="form.category_id" placeholder="请选择">
+            <el-option
+              v-for="item in categories"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item prop="price" label="单价">
+          <el-input-number v-model="form.price" :precision="2" :step="1" :min="0"></el-input-number>
+        </el-form-item>
+        <el-form-item prop="amount" label="库存">
+          <el-input-number v-model="form.amount" :precision="2" :step="1" :min="0"></el-input-number>
+        </el-form-item>
+        <el-form-item prop="unit" label="单位">
+          <el-col :span="3">
+            <el-input v-model="form.unit"></el-input>
+          </el-col>（例：千克、个... ...）
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">提交</el-button>
+          <el-button @click="onCancle">取消</el-button>
+        </el-form-item>
+      </el-form>
     </template>
   </admin-layout>
 </template>
@@ -72,11 +59,12 @@ export default {
   },
   data() {
   	return {
-      tableData: [],
-      pagination: {
-        page: 1,
-        pageSize: 8,
-        pages: 1
+      form: {
+        name: '',
+        category_id: '',
+        amount: 0.00,
+        price: 0.00,
+        unit: ''
       }
     }
   }
