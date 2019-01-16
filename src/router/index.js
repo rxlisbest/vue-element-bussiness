@@ -5,6 +5,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/admin/login',
+      name: 'admin-login',
+      component: require('@/pages/admin/login/index').default
+    },
+    {
       path: '/admin/index',
       name: 'admin-index',
       component: require('@/pages/admin/index/index').default
