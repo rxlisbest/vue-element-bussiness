@@ -22,13 +22,13 @@
     <span></span>
     <el-main>
       <el-row>
-        <el-col :xs="24" :sm="24" :md="{span: 8, offset: 8}" :lg="{span: 8, offset: 8}" :xl="{span: 8, offset: 8}">
-          <el-card class="box-card">
+        <el-col :xs="24" :sm="24" :md="{span: 12, offset: 6}" :lg="{span: 8, offset: 8}" :xl="{span: 8, offset: 8}">
+          <el-card shadow="always" class="box-card">
             <div slot="header" class="clearfix">
               登录
             </div>
             <div>
-              <el-form class="admin-login-form" ref="form" :model="form" label-width="80px" size="medium">
+              <el-form class="admin-login-form" ref="form" :model="form" label-width="60px" size="medium">
                 <el-form-item label="用户名">
                   <el-input></el-input>
                 </el-form-item>
@@ -55,12 +55,7 @@ export default {
   },
   data() {
   	return {
-      tableData: [],
-      pagination: {
-        page: 1,
-        pageSize: 8,
-        pages: 1
-      }
+      form: {}
     }
   }
 }
@@ -68,6 +63,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .box-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
   .background {
     width: 100vw;
     height: 100vh;
