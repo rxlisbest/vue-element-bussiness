@@ -113,7 +113,15 @@
   }
 </script>
 
-<style>
+<style scoped>
+  html{
+    position:fixed;
+    height:100%;
+  }
+  body {
+    overflow: hidden;
+    overflow-x: hidden;
+  }
   body, html {
     height: 100%;
   }

@@ -30,6 +30,11 @@ export default new Router({
       component: require('@/pages/index/index/index').default
     },
     {
+      path: '/product',
+      name: 'product-index',
+      component: require('@/pages/index/product/index').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
