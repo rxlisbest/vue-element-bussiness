@@ -63,19 +63,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  html{
-    position:fixed;
-    height:100%;
-  }
-  body {
-    overflow: hidden;
-    overflow-x: hidden;
-  }
   .box-card {
     max-width: 400px;
     margin: 0 auto;
   }
   .background {
+    position:fixed;
+    height:100%;
     width: 100vw;
     height: 100vh;
     background: #3E1E68;

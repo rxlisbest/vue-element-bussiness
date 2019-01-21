@@ -15,6 +15,15 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row class="index-product-pagination">
+        <el-col :span="24">
+          <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="1000">
+          </el-pagination>
+        </el-col>
+      </el-row>
     </template>
   </index-layout>
 </template>
@@ -35,6 +44,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .index-product {
+  }
+  .index-product-pagination {
+    margin-top: 30px;
+    text-align: center;
   }
   .index-product-item {
     margin-top: 20px;
