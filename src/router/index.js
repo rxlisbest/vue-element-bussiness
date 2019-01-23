@@ -35,6 +35,11 @@ export default new Router({
       component: require('@/pages/index/product/index').default
     },
     {
+      path: '/contact-us',
+      name: 'contact-us-index',
+      component: require('@/pages/index/contact-us/index').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
